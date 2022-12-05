@@ -1,5 +1,6 @@
-let unsortedArray = [0, 2, 5, 8, 1, 3, 4, 7, 6, 90, 43, 21, 30, 99];
 
+
+let unsortedArray = [0, 2, 5, 8, 1, 3, 4, 7, 6, 90, 43, 21, 30, 99];
 function quicksort(array) {
     if (array.length <= 1) {
         return array;
@@ -18,3 +19,4 @@ function quicksort(array) {
 }
 
 console.log(quicksort(unsortedArray));
+// I will go back to the questions and try to answer them after I study today's material
