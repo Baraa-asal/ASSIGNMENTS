@@ -17,7 +17,7 @@
 // }
 // const { name: otherName } = employee;
 // console.log(name); //error undefined variable
-// console.log(otherName); //Elon (but will not print it)
+// console.log(otherName); //Elon
 
 
 //-----------------------------------------------------------//
@@ -51,17 +51,17 @@
 
 
 //Problem 5:
-// const lastTest = {
-//     key: 'value',
-//     secondKey: [1, 5, 1, 8, 3, 3]
-// }
-// const { key } = lastTest; //key = 'value'
-// const { secondKey } = lastTest; //secondKey = [1, 5, 1, 8, 3, 3]
-// const [ ,willThisWork] = secondKey; //it will throw an error if line 59 did not exist. result: willThisWork = 5
-// console.log(key); //value
-// console.log(secondKey); //[1, 5, 1, 8, 3, 3]
-// console.log(secondKey[0]); //1
-// console.log(willThisWork); //5
+const lastTest = {
+    key: 'value',
+    secondKey: [1, 5, 1, 8, 3, 3]
+}
+const { key } = lastTest; //key = 'value'
+const { secondKey } = lastTest; //secondKey = [1, 5, 1, 8, 3, 3]
+const [ ,willThisWork] = secondKey; //it will throw an error if line 59 did not exist. result: willThisWork = 5
+console.log(key); //value
+console.log(secondKey); //[1, 5, 1, 8, 3, 3]
+console.log(secondKey[0]); //1
+console.log(willThisWork); //5
 
 
 
