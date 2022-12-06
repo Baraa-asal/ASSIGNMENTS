@@ -59,3 +59,5 @@ console.log(pairProgramming);
 console.log(redBeltNinja.power);
 pairProgramming.play(redBeltNinja);
 console.log(redBeltNinja.power);
+
+
