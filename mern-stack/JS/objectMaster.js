@@ -71,3 +71,28 @@ console.log("a count of the number of pokémon that are normal type: ");
 const countOfNormalType = pokemon.filter(p => p.types == "normal").length;
 console.log(countOfNormalType);
 console.log("\n");
+
+
+
+//**********************************************
+//**********************************************
+//Below are extra practice we decided to do me and Maram because we enjoyed the assignment:: ^_^
+//1- An array containing just the id of all names that start with the letter M:
+//2- An array containing just the name of all ids that their unit is 2, ex: 72, 12, 122
+//**********************************************
+//**********************************************
+
+console.log("-------------------------------------------------------------------");
+console.log("Extra Practice 1: An array containing just the id of all names that start with the letter M: ");
+const idOfNamesStartWithM = pokemon.filter(p => p.name[0] == "M").map(p => p.id);
+// Another way using built-in function startsWith():
+// const idOfNamesStartWithM = pokemon.filter(p => p.name.startsWith("M").map(p => p.id);
+console.log(idOfNamesStartWithM);
+console.log("\n");
+
+
+console.log("-------------------------------------------------------------------");
+console.log("Extra Practice 2: An array containing just the name of all ids that their unit is 2, ex: 72, 12, 122: ");
+const idUnitIs2 = pokemon.filter(p => p.id % 10 === 2).map(p => p.name);
+console.log(idUnitIs2);
+console.log("\n");
