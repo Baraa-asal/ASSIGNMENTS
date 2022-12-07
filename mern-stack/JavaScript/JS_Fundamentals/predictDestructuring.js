@@ -17,7 +17,7 @@
 // }
 // const { name: otherName } = employee;
 // console.log(name); //error undefined variable
-// console.log(otherName); //Elon
+// console.log(otherName); //Elon but won't print it because line 19 has an error
 
 
 //-----------------------------------------------------------//
@@ -57,7 +57,7 @@ const lastTest = {
 }
 const { key } = lastTest; //key = 'value'
 const { secondKey } = lastTest; //secondKey = [1, 5, 1, 8, 3, 3]
-const [ ,willThisWork] = secondKey; //it will throw an error if line 59 did not exist. result: willThisWork = 5
+const [, willThisWork] = secondKey; //it will throw an error if line 59 did not exist. result: willThisWork = 5
 console.log(key); //value
 console.log(secondKey); //[1, 5, 1, 8, 3, 3]
 console.log(secondKey[0]); //1
