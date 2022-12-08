@@ -47,9 +47,9 @@ const pairProgramming = new Effect("Pair Programming", 3, "increase target's pow
 // console.log(hardAlgorithm);
 // console.log(unhandledPromiseRejection);
 
-// console.log(hardAlgorithm);
-// hardAlgorithm.play(redBeltNinja);
-// console.log(redBeltNinja);
+console.log(hardAlgorithm);
+hardAlgorithm.play(redBeltNinja);
+console.log(redBeltNinja);
 
 console.log(blackBeltNinja.res)
 redBeltNinja.attack(blackBeltNinja);

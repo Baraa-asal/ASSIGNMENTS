@@ -18,11 +18,11 @@ function randomNumber() {
 
 // converted: let randomNumber = () => Math.random
 
-document.addEventListener('click', function() { console.log('Click') })
+// document.addEventListener('click', function() { console.log('Click') })
 
 // converted:  document.addEventListener('click', () => {console.log('Click')} )
 
-
+ 
 //------------------------------------------------------------
 class Person {
     constructor(name) {
@@ -37,10 +37,11 @@ class Person {
   
     printNameFunction() {
       setTimeout(function() {
-        console.log(`Function: ${this.name}`)
+        console.log(`Function: ${this.name}`) //this refers to the object who calls the function,
       }, 100)
     }
   }
+  //
   
   const person = new Person('Kyle')
   person.printNameArrow()
