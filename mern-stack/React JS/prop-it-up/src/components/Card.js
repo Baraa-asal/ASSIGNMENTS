@@ -1,7 +1,9 @@
 import React from "react";
 
 class Card extends React.Component {
+
     render(){
+       console.log(this.props);
         return (
             <div>
                 <h1>{`${this.props.lastname}, ${this.props.firstname}`}</h1>

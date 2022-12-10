@@ -3,12 +3,18 @@ import './App.css';
 import Card from './components/Card';
 
 function App() {
-  return (
+  const persons = [
+    {"firstname": "Baraa", "lastname": "AboAsal", "age": 26, "haircolor": "Red"},
+    {"firstname": "Afnan", "lastname": "AboAsal", "age": 20, "haircolor": "Black"},
+    {"firstname": "Bayan", "lastname": "AboAsal", "age": 22, "haircolor": "Black"},
+    {"firstname": "Yaseen", "lastname": "AboAsal", "age": 19, "haircolor": "Blonde"}
+  ]
+  return ( //in the return, im trying to return a jsx syntax, so if i want to write pure js, i need to use curly braces
     <div className="App">
-      <Card firstname = {"Jane"} lastname = {"Doe"} age={23} haircolor = {"brown"}></Card>
-      <Card firstname = {"Jane"} lastname = {"Doe"} age={23} haircolor = {"brown"}>2</Card>
-      <Card firstname = {"Jane"} lastname = {"Doe"} age={23} haircolor = {"brown"}>3</Card>
-      <Card firstname = {"Jane"} lastname = {"Doe"} age={23} haircolor = {"brown"}>4</Card>
+      {
+      persons.map(person => <Card key = {person.firstname + person.lastname} {...person}/>) 
+      //the key thing is due to an error that occured with me in the console
+      }
     </div>
   );
 }
