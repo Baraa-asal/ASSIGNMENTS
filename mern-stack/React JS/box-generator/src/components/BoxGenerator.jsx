@@ -10,7 +10,7 @@ const BoxGenerator = () => {
     const temp = [...boxes, newBox]; //shallow copy of boxes, but adding new elements too
     setBoxes(temp);
     setColor("");
-    setDimension("")
+    setDimension("");
     console.log(temp);
   };
   const reset = () => {
