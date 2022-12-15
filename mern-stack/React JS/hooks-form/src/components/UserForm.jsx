@@ -1,143 +1,107 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-const UserForm = (props) => {
+const UserForm = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
-    const [firstName, setFirstName] = useState("");
-    const [firstNameError, setFirstNameError] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [lastNameError, setLastNameError] = useState("");
-    const [email, setEmail] = useState("");
-    const [emailError, setEmailError] = useState("");
-    const [password, setPassword] = useState("");
-    const [passwordError, setPasswordError] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [confirmPasswordError, setConfirmPasswordError] = useState("");
-
-    const createUser = (e) => {
-        e.preventDefault();
-        const newUser = { firstName, lastName, email, password };
-        console.log("Welcome", newUser);
-    };
-
-    const handleFirstName = (e) => {
-        setFirstName(e.target.value);
-        if ((e.target.value.length > 0) && (e.target.value.length < 3)) {
-            setFirstNameError("First Name must be at least 3 characters or longer!");
-        } else {
-            setFirstNameError('');
-        }
+  const handleFirstName = (e) => {
+    if (e.target.value.length > 0 && e.target.value.length < 3) {
+      setFirstNameError("First Name Must Be At Least 3!");
+    } else {
+      setFirstNameError("");
+      setFirstName(e.target.value);
     }
-
-    const handleLastName = (e) => {
-        setLastName(e.target.value);
-        if ((e.target.value.length > 0) && (e.target.value.length < 3)) {
-            setLastNameError("Last Name must be at least 3 characters or longer!");
-        } else {
-            setLastNameError('');
-        }
+  };
+  const handleLastName = (e) => {
+    if (e.target.value.length > 0 && e.target.value.length < 3) {
+      setLastNameError("Last Name Must Be At Least 3!");
+    } else {
+      setLastNameError("");
+      setLastName(e.target.value);
     }
+  };
 
-    const handleEmail = (e) => {
-        setEmail(e.target.value);
-        if ((e.target.value.length > 0) && (e.target.value.length < 3)) {
-            setEmailError("Email must be at least 3 character or longer!");
-        } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e.target.value)) && (e.target.value.length > 0)) {
-            setEmailError("Invalid email format!");
-        } else {
-            setEmailError('');
-        }
+  const handleEmail = (e) => {
+    if (e.target.value.length > 0 && e.target.value.length < 5) {
+      setEmailError("Email must be at least 5!");
+    } else {
+      setEmailError("");
+      setEmail(e.target.value);
     }
+  };
 
-    const handlePassword = (e) => {
-        setPassword(e.target.value);
-        if ((e.target.value.length > 0) && (e.target.value.length < 8)) {
-            setPasswordError("Passsword must be at least 8 characters in length!");
-        } else {
-            setPasswordError('');
-        }
+  const handlePassword = (e) => {
+    if (e.target.value.length > 0 && e.target.value.length < 8) {
+      setPasswordError("Password must be at least 3!");
+    } else {
+      setPasswordError("");
+      setPassword(e.target.value);
     }
+  };
 
-    const handleConfirmPassword = (e) => {
-        setConfirmPassword(e.target.value);
-        if ( password === e.target.value ) {
-            setConfirmPasswordError('');
-        } else if (password !== e.target.value) {
-            setConfirmPasswordError("Passwords must match!")
-        }
+  const handleConfirmPassword = (e) => {
+    if (e.target.value != password && e.target.value > 0) {
+      setConfirmPasswordError("Passwords must match");
+    } else {
+      setConfirmPasswordError("");
+      setConfirmPassword(e.target.value);
     }
+  };
+
   return (
-    (
-        <div className="row">
-            <form className="col-10 bg-primary" onSubmit={createUser}>
-                <div className="form-group">
-                    <label for="firstName">First Name: </label>
-                    <input id="firstName" className="form-control" type="text" onChange={(e) => handleFirstName(e)} />
-                    <strong>
-                        {
-                            firstNameError
-                                ? <p style={{ color: 'red' }}>{firstNameError}</p>
-                                : ''
-                        }
-                    </strong>
-                </div>
-                <div className="form-group">
-                    <label for="lastName">Last Name: </label>
-                    <input id="lastName" className="form-control" type="text" onChange={(e) => handleLastName(e)} />
-                    <strong>
-                        {
-                            lastNameError
-                                ? <p style={{ color: 'red' }}>{lastNameError}</p>
-                                : ''
-                        }
-                    </strong>
-                </div>
-                <div className="form-group">
-                    <label for="email">Email Address: </label>
-                    <input id="email" className="form-control" type="text" onChange={(e) => handleEmail(e)} />
-                    <strong>
-                        {
-                            emailError
-                                ? <p style={{ color: 'red' }}>{emailError}</p>
-                                : ''
-                        }
-                    </strong>
-                </div>
-                <div className="form-group">
-                    <label for="password">Password: </label>
-                    <input id="password" className="form-control" type="text" onChange={(e) => handlePassword(e)} />
-                    <strong>
-                        {
-                            passwordError
-                                ? <p style={{ color: 'red' }}>{passwordError}</p>
-                                : ''
-                        }
-                    </strong>
-                </div>
-                <div>
-                    <label for="confirmPassword">Confirm Password: </label>
-                    <input id="confirmPassword" className="form-control" type="text" onChange={(e) => handleConfirmPassword(e)} />
-                    <strong>
-                        {
-                            confirmPasswordError
-                                ? <p style={{ color: 'red' }}>{confirmPasswordError}</p>
-                                : ''
-                        }
-                    </strong>
-                </div>
-                <input className="btn btn-sm bg-success"type="submit" value="Create User" />
-            </form>
-            <p></p>
-            <div>
-                <h1>Your Form Data</h1>
-                <p><strong>First Name: </strong>{firstName}</p>
-                <p><strong>Last Name: </strong>{lastName}</p>
-                <p><strong>Email: </strong>{email}</p>
-                <p><strong>Password: </strong>{password}</p>
-                <p><strong>ConfirmPassword: </strong>{confirmPassword}</p>
-            </div>
+    <div className="container">
+      <form className="formStyle">
+        <div>
+          <label> First Name: </label>
+          <input type="text" onChange={handleFirstName} />
+          {firstNameError ? (
+            <p style={{ color: "red" }}>{firstNameError}</p>
+          ) : (
+            ""
+          )}
         </div>
-    )
-  )
-}
+        <div>
+          <label> Last Name: </label>
+          <input type="text" onChange={handleLastName} />
+          {lastNameError ? <p style={{ color: "red" }}>{lastNameError}</p> : ""}
+        </div>
+        <div>
+          <label> Email: </label>
+          <input type="text" onChange={handleEmail} />
+          {emailError ? <p style={{ color: "red" }}>{emailError}</p> : ""}
+        </div>
+        <div>
+          <label> Password: </label>
+          <input type="password" onChange={handlePassword} />
+          {passwordError ? <p style={{ color: "red" }}>{passwordError}</p> : ""}
+        </div>
+        <div>
+          <label> Confirm password: </label>
+          <input type="password" onChange={handleConfirmPassword} />
+          {confirmPasswordError ? (
+            <p style={{ color: "red" }}>{confirmPasswordError}</p>
+          ) : (
+            ""
+          )}
+        </div>
+      </form>
+      <div className="results">
+        <p>First Name: {firstName} </p>
+        <p>Last Name: {lastName} </p>
+        <p>Email: {email} </p>
+        <p>Passowrd: {password} </p>
+        <p>Confirm Password: {confirmPassword} </p>
+      </div>
+    </div>
+  );
+};
 
-export default UserForm
+export default UserForm;
