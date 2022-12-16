@@ -2,18 +2,18 @@ import React from "react";
 import Tab from "./Tab";
 
 const TabsContainer = (props) => {
-  let counter = -1;
   return (
-    <div>
-      {props.tabsTitles.map((element) => {
-        counter++;
+    <div className="tabContainer">
+      {/* the callback of map function takes two parameters, the element and index, the index is optional to use */}
+      {props.tabsTitles.map((element, i) => {
         return (
           <Tab
-            key={counter}
+            key={element.replace(" ", "-")} //not recommended to use the index as keys
             title={element}
-            index={counter}
-            changeContent={props.changeContent}
-          ></Tab>
+            index={i}
+            tabWasClicked={props.tabWasClicked}
+            isSelected={props.selectedTab === i}
+          />
         );
       })}
     </div>

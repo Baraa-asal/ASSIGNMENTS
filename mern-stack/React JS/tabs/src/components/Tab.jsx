@@ -1,13 +1,14 @@
-import React from 'react'
+import React from "react";
 
 const Tab = (props) => {
-
   const handleTab = () => {
-    props.changeContent(props.index)
-  }
+    props.tabWasClicked(props.index);
+  };
   return (
-    <div onClick={handleTab}>{props.title}</div>
-  )
-}
+    <button className={`button-89 ${props.isSelected ? "selected" : ""}`} onClick={handleTab}>
+      <span>{props.title}</span>
+    </button>
+  );
+};
 
-export default Tab
+export default Tab;
