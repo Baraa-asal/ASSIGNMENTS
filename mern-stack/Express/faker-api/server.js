@@ -31,7 +31,7 @@ const createCompany = () => {
 };
 
 app.get("/api/users/new", (req, res) => {
-    res.json(createUser())
+    res.send(createUser())
 })
 app.get("/api/companies/new", (req, res) => {
     res.json(createCompany())

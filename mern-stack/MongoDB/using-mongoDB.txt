@@ -1,0 +1,53 @@
+> use my_first_db
+> db.createCollection('students')
+> db.students.insert({name: "Baraa", home_state: 'Anabta', lucky_number: 5, birthday: {month: 5, day: 5, year: 1996}})
+> db.students.insert({name: "Afnan", home_state: 'Tulakrm', lucky_number: 8, birthday: {month: 8, day: 25, year: 2003}})
+> db.students.insert({name: "Rayan", home_state: 'Anabta', lucky_number: 8, birthday: {month: 8, day: 25, year: 2003}})
+> db.students.insert({name: "Yaseen", home_state: 'Tulkarm', lucky_number: 9, birthday: {month: 30, day: 9, year: 2004}})
+> db.students.insert({name: "Bayan", home_state: 'anabta', lucky_number: 1, birthday: {month: 1, day: 9, year: 2001}})
+> db.students.find().pretty()
+> db.students.find({$or: [{home_state: "Anabta"}, {home_state: "Tulkarm"}]})
+> db.students.find({lucky_number: {$gt: 3}}).pretty()
+> db.students.find({lucky_number: {$lte: 10}}).pretty()
+> db.students.find({lucky_number:{$gte: 1, $lte: 9}})
+
+** adding an array of interests to all of the documents in students collection : 
+> db.students.update({}, { $set: {"interests": ['coding', 'brunch', 'MongoDB']} }, false, true)
+
+** editting the interests for each student alone: 
+> db.students.update({name: "Bayan"}, {$set: {"interests": ['coding', 'brunch', 'MongoDB', 'ART']}})
+> db.students.update({name: "Yaseen"}, {$set: {"interests": ['coding', 'brunch', 'MongoDB', 'Video games']}})
+> db.students.update({name: "Rayan"}, {$set: {"interests": ['coding', 'brunch', 'MongoDB', 'Modeling']}})
+> db.students.update({name: "Afnan"}, {$set: {"interests": ['coding', 'brunch', 'MongoDB', 'Coding']}})
+> db.students.update({name: "Baraa"}, {$set: {"interests": ['coding', 'brunch', 'MongoDB', 'Walking']}})
+
+** Adding and removing an interest :
+> db.students.update({name: 'Yaseen'}, {$push: {interests: 'snowboarding'}})
+> db.students.update({name: 'Yaseen'}, {$pop: {interests: 1}}) //pops last element in the array
+> db.students.update({name: 'Yaseen'}, {$pop: {interests: -1}}) //pops first element in the array 
+
+** Remove all students from Anabta :
+> db.students.remove({home_state: 'Anabta'})
+
+** Remove by a name: 
+> db.students.remove({name: Bayan})
+
+** Remove just one who had lucky number more than 5:
+> db.students.remove({lucky_number: {$gt: 5}}, true)
+
+** Adding a field number_of_belts to all, and setting it to 0:
+> db.students.updateMany({}, {$set: {number_of_belts: 0}})
+
+** Increment this field by 1 for all students in anabta:
+> db.students.updateMany( { home_state: "anabta" },{ $inc: { number_of_belts: 1 }})
+
+** Updating the name of the field: (number_of_belts) to (belts_earned):
+> db.students.updateMany({}, {$rename:{"number_of_belts":"belts_earned"}}, false, true)
+
+** remove the lucky_number field: 
+> db.students.updateMany({},{ $unset: { lucky_number: "" }})
+
+> db.students.updateMany({ }, {$set: {updated_on: Date()}})
+
+
+
