@@ -1,59 +1,63 @@
-import './App.css';
-import React, { useState } from 'react';
-import TodoListForm from './components/TodoListForm';
-import TodoListTable from './components/TodoListTable';
+import "./App.css";
+import React, { useState } from "react";
+import TodoListForm from "./components/TodoListForm";
+import TodoListTable from "./components/TodoListTable";
 
 const App = () => {
   const [todoList, setTodoList] = useState([
     {
       task: "Study Python",
-      complete: false
+      complete: false,
     },
     {
       task: "Watch Sunset",
-      complete: true
+      complete: true,
     },
     {
       task: "Visit Mom",
-      complete: false
-    }
-  ])
+      complete: false,
+    },
+  ]);
 
-  // //// CREATE ///////////////////////////////////////////////////
+  //CREATE
+
   const addTask = (newTask) => {
     let newTodoList = [...todoList];
     newTodoList.push({
-        task: newTask,
-        complete: false
-      }
-    );
+      task: newTask,
+      complete: false,
+    });
     setTodoList(newTodoList);
-  }
+  };
 
-  // //// UPDATE ///////////////////////////////////////////////////
+  //CHECKING THE ITEMS HANDLING METHOD:
 
   const handleCompleteChecked = (targetIdx, targetComplete) => {
     const newTodoList = [...todoList];
     newTodoList[targetIdx].complete = targetComplete;
     setTodoList(newTodoList);
-  }
+  };
 
-  // //// DELETE ///////////////////////////////////////////////////
+  //DELETE
 
   const deleteTask = (targetIdx) => {
-    const filteredTodoList = todoList.filter ( (taskItem, idx) => idx !== targetIdx );
+    const filteredTodoList = todoList.filter(
+      (taskItem, idx) => idx !== targetIdx
+    );
     setTodoList(filteredTodoList);
-  }
+  };
 
-  // //// OUTPUT ///////////////////////////////////////////////////
+  //OUTPUT
   return (
     <div className="App">
-      <TodoListForm addTask={ addTask } />
-      <TodoListTable  todoList={ todoList } 
-                              handleCompleteChecked={ handleCompleteChecked }
-                              deleteTask={ deleteTask } />
-    </div >
+      <TodoListForm addTask={addTask} />
+      <TodoListTable
+        todoList={todoList}
+        handleCompleteChecked={handleCompleteChecked}
+        deleteTask={deleteTask}
+      />
+    </div>
   );
-}
+};
 
 export default App;
