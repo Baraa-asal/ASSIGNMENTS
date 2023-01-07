@@ -12,7 +12,7 @@ module.exports.createPerson = (request, response) => {
 };
 
 module.exports.findAllPeople = (request, response) => {
-  Person.find()
+  Person.find({})
     .then((res) => {
       response.json(res);
     })
@@ -20,3 +20,7 @@ module.exports.findAllPeople = (request, response) => {
       response.json({ err });
     });
 };
+
+
+
+

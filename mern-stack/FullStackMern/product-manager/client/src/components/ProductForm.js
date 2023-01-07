@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-
+  const navigate = useNavigate();
   const onSubmitHandler = (e) => {
     e.preventDefault();
     axios
@@ -14,7 +15,9 @@ export default () => {
         price,
         description,
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        navigate(`/products/${res.data._id}`);
+      })
       .catch((err) => console.log(err));
   };
 
